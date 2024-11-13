@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="dogDietForm">
+        <label for="weight">Peso (kg):</label>
+        <input type="number" id="weight" required>
+      
+        <label for="activityLevel">nivel de actividad:</label>
+        <select id="activityLevel">
+          <option value="Low">Bajo</option>
+          <option value="Moderate">Medio</option>
+          <option value="High">Alto</option>
+        </select>
+
+        <label for="tamaño">Tamaño:</label>
+        <select id="tamaño">
+          <option value="Pequeña">Pequeña</option>
+          <option value="Mediana">Mediana</option>
+          <option value="Grande">Grande</option>
+        </select>
+
+        <label for="ageGroup">Edad:</label>
+        <select id="ageGroup">
+          <option value="Puppy">Cachorro</option>
+          <option value="Adult">Adulto</option>
+          <option value="Senior">Anciano</option>
+        </select>
+      
+        <button type="button" onclick="calculateDiet()">Calculate</button>
+      </form>
+      
+      
+      <div id="results">
+        <h3>Results:</h3>
+        <p>Comida diaria total: <span id="totalFood"></span> kg</p>
+        <p>Carne magra: <span id="muscleMeat"></span> kg</p>
+        <p>huesos carnosos: <span id="edibleBone"></span> kg</p>
+        <p>Visceras: <span id="liver"></span> kg</p>
+        <p>Fibra: <span id="otherOrgan"></span> kg</p>
+      </div>
+
+<script src="script.js"></script> 
+
+</body>
+</html>
+
