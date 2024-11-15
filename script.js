@@ -5,47 +5,45 @@ function calculateDiet() {
     const ageGroup = document.getElementById('ageGroup').value;
     const tamaño = document.getElementById('tamaño').value;
 
-
     // Calculate daily food percentage based on age
     let dailyFoodPercentage;
-    switch(ageGroup, tamaño) {
-      case ('Puppy' && 'Pequeña'):
-        dailyFoodPercentage = 0.03; // 3% for puppies
-        break;
-        case ('Puppy' && 'Mediana'):
-        dailyFoodPercentage = 0.045; // 3% for puppies
-        break;
-        case ('Puppy' && 'Grande'):
-        dailyFoodPercentage = 0.06; // 3% for puppies
-        break;
-      case 'Adult':
+
+    // Using a combined condition
+    if (ageGroup === 'Puppy') {
+        if (tamaño === 'Pequeña') {
+            dailyFoodPercentage = 0.03; // 3% for small puppies
+        } else if (tamaño === 'Mediana') {
+            dailyFoodPercentage = 0.045; // 4.5% for medium puppies
+        } else if (tamaño === 'Grande') {
+            dailyFoodPercentage = 0.06; // 6% for large puppies
+        }
+    } else if (ageGroup === 'Adult') {
         dailyFoodPercentage = 0.025; // 2.5% for adults
-        break;
-      case 'Senior':
+    } else if (ageGroup === 'Senior') {
         dailyFoodPercentage = 0.02; // 2% for seniors
-        break;
+    } else {
+        // Handle unexpected ageGroup inputs
+        console.error('Invalid age group');
+        return;
     }
 
     // Adjust for activity level
-    switch(activityLevel) {
-      case 'Low':
+    if (activityLevel === 'Low') {
         dailyFoodPercentage *= 0.9;
-        break;
-      case 'High':
+    } else if (activityLevel === 'High') {
         dailyFoodPercentage *= 1.1;
-        break;
     }
-  
+
     // Calculate total daily food amount
     const totalDailyFood = weight * dailyFoodPercentage;
-  
+
     // Calculate component amounts
     const muscleMeat = totalDailyFood * 0.4;
     const edibleBone = totalDailyFood * 0.4;
     const liver = totalDailyFood * 0.1;
     const otherOrgan = totalDailyFood * 0.1;
-  
-    console.log(muscleMeat)
+
+    console.log(muscleMeat);
 
     // Display results
     document.getElementById('totalFood').textContent = totalDailyFood.toFixed(2);
@@ -53,4 +51,4 @@ function calculateDiet() {
     document.getElementById('edibleBone').textContent = edibleBone.toFixed(2);
     document.getElementById('liver').textContent = liver.toFixed(2);
     document.getElementById('otherOrgan').textContent = otherOrgan.toFixed(2);
-  } 
+}
